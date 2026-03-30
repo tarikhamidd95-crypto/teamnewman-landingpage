@@ -21,18 +21,15 @@
 </head>
 <body>
     <div id="root"></div>
-
     <script type="text/babel">
-        const { useState, useEffect } = React;
-        const { motion, AnimatePresence } = FramerMotion;
-        const { ChevronRight, Shield, Globe, TrendingUp } = lucide;
+        const { useState } = React;
+        const { motion } = FramerMotion;
+        const { ChevronRight } = lucide;
 
         function App() {
             const [lang, setLang] = useState('en');
-
             return (
-                <div className="min-h-screen bg-[#041a0f] text-white selection:bg-gold selection:text-black">
-                    {/* Header */}
+                <div className="min-h-screen bg-[#041a0f] text-white">
                     <header className="fixed top-0 w-full h-[80px] bg-[#041a0f]/95 border-b border-gold/20 flex items-center justify-between px-10 z-50 backdrop-blur-xl">
                         <div className="text-gold font-serif text-2xl tracking-tighter">TeamNewman.com</div>
                         <div className="flex items-center gap-6 text-[10px] uppercase tracking-[2px]">
@@ -44,32 +41,19 @@
                              </a>
                         </div>
                     </header>
-
-                    {/* Hero Section */}
                     <section className="relative min-h-screen flex items-center justify-center text-center px-5">
-                        <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
-                        <motion.div 
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="relative z-10 max-w-5xl"
-                        >
-                            <p className="text-gold text-[12px] tracking-[10px] uppercase mb-6 font-bold">
-                                {lang === 'en' ? 'Institutional Digital Infrastructure' : 'البنية التحتية الرقمية المؤسسية'}
-                            </p>
+                        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="relative z-10 max-w-5xl">
+                            <p className="text-gold text-[12px] tracking-[10px] uppercase mb-6 font-bold">Institutional Digital Infrastructure</p>
                             <h1 className="font-serif text-[clamp(45px,10vw,120px)] font-bold leading-none mb-10 tracking-tighter">
                                 Team<span className="text-gold">Newman</span>
                             </h1>
-                            
-                            <div className="flex flex-wrap justify-center gap-4 mb-12">
-                                <div className="glass px-8 py-4 rounded-sm border-t-2 border-gold">
-                                    <p className="text-[10px] uppercase tracking-[3px] text-gray-400 mb-1">Asset Valuation</p>
-                                    <p className="text-2xl font-serif text-gold">$15,900 — $50,000+</p>
-                                </div>
+                            <div className="glass px-8 py-4 rounded-sm border-t-2 border-gold inline-block mb-12">
+                                <p className="text-[10px] uppercase tracking-[3px] text-gray-400 mb-1">Asset Valuation</p>
+                                <p className="text-2xl font-serif text-gold">$15,900 — $50,000+</p>
                             </div>
-
-                            <a href="mailto:tarik.hamidd95@gmail.com" className="group relative inline-flex items-center gap-4 bg-white text-black px-14 py-6 text-sm font-black uppercase tracking-[5px] hover:bg-gold transition-all">
-                                {lang === 'en' ? 'Submit Acquisition Proposal' : 'تقديم عرض استحواذ'}
+                            <br/>
+                            <a href="mailto:tarik.hamidd95@gmail.com" className="group inline-flex items-center gap-4 bg-white text-black px-14 py-6 text-sm font-black uppercase tracking-[5px] hover:bg-gold transition-all">
+                                {lang === 'en' ? 'Submit Proposal' : 'تقديم عرض'}
                                 <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                             </a>
                         </motion.div>
@@ -77,7 +61,6 @@
                 </div>
             );
         }
-
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
