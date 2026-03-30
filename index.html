@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Newman | Institutional Digital Assets</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <script src="https://unpkg.com/lucide@0.292.0/dist/umd/lucide.js"></script>
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
         body { background-color: #041a0f; color: white; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
         .font-serif { font-family: 'Cinzel', serif; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(212, 175, 55, 0.2); }
         .text-gold { color: #d4af37; }
         .bg-gold { background-color: #d4af37; }
+        .grid-bg { background-image: radial-gradient(circle at 2px 2px, rgba(212, 175, 55, 0.05) 1px, transparent 0); background-size: 40px 40px; }
     </style>
 </head>
 <body>
@@ -25,54 +28,61 @@
     <script type="text/babel">
         const { useState } = React;
         const { motion } = FramerMotion;
-        const { ChevronRight, Shield, Globe, TrendingUp } = lucide;
+        const { ChevronRight, Shield, Globe, Award } = lucide;
 
         function App() {
             const [lang, setLang] = useState('en');
 
             return (
-                <div className="min-h-screen bg-[#041a0f] text-white selection:bg-gold selection:text-black" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-                    {/* Header */}
-                    <header className="fixed top-0 w-full h-[80px] bg-[#041a0f]/95 border-b border-gold/20 flex items-center justify-between px-10 z-50 backdrop-blur-xl">
+                <div className="min-h-screen grid-bg selection:bg-gold selection:text-black" dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+                    <header className="fixed top-0 w-full h-20 bg-[#041a0f]/90 border-b border-gold/20 flex items-center justify-between px-8 z-50 backdrop-blur-md">
                         <div className="text-gold font-serif text-2xl tracking-tighter">TeamNewman.com</div>
-                        <div className="flex items-center gap-6">
-                             <button onClick={() => setLang(lang === 'en' ? 'ar' : 'en')} className="text-[10px] uppercase tracking-[2px] border border-gold/40 px-3 py-1 rounded hover:bg-gold/10 transition-colors">
-                                {lang === 'en' ? 'ARABIC' : 'ENGLISH'}
-                             </button>
-                             <a href="mailto:tarik.hamidd95@gmail.com" className="bg-gold text-black px-6 py-2 text-[10px] font-bold uppercase tracking-[2px] hover:bg-white transition-all">
-                                {lang === 'en' ? 'Inquire' : 'استفسار'}
-                             </a>
-                        </div>
+                        <button onClick={() => setLang(lang === 'en' ? 'ar' : 'en')} className="text-[10px] tracking-[2px] border border-gold/40 px-4 py-1 rounded hover:bg-gold/10 transition-all uppercase">
+                            {lang === 'en' ? 'Arabic' : 'English'}
+                        </button>
                     </header>
 
-                    {/* Hero Section */}
-                    <section className="relative min-h-screen flex items-center justify-center text-center px-5">
-                        <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+                    <main className="pt-20 flex flex-col items-center justify-center min-h-screen text-center px-6">
                         <motion.div 
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="relative z-10 max-w-5xl"
+                            transition={{ duration: 0.8 }}
+                            className="max-w-4xl"
                         >
-                            <p className="text-gold text-[12px] tracking-[10px] uppercase mb-6 font-bold">
-                                {lang === 'en' ? 'Tier-1 Institutional Asset' : 'أصل مؤسسي من الفئة الأولى'}
-                            </p>
-                            <h1 className="font-serif text-[clamp(40px,10vw,110px)] font-bold leading-none mb-10 tracking-tighter">
-                                Team<span className="text-gold">Newman</span>
-                            </h1>
-                            
-                            <div className="glass px-10 py-6 rounded-sm border-t-2 border-gold inline-block mb-12">
-                                <p className="text-[10px] uppercase tracking-[4px] text-gray-400 mb-2">Market Valuation</p>
-                                <p className="text-3xl font-serif text-gold font-bold">$15,900 — $50,000+</p>
+                            <div className="inline-flex items-center gap-2 mb-8 glass px-4 py-1 rounded-full border-gold/30">
+                                <Shield className="w-3 h-3 text-gold" />
+                                <span className="text-[10px] uppercase tracking-[3px] text-gold font-bold">
+                                    {lang === 'en' ? 'Verified Institutional Asset' : 'أصل مؤسسي معتمد'}
+                                </span>
                             </div>
 
-                            <div className="flex flex-col items-center gap-6">
-                                <a href="mailto:tarik.hamidd95@gmail.com" className="group flex items-center gap-4 bg-white text-black px-14 py-6 text-sm font-black uppercase tracking-[5px] hover:bg-gold transition-all">
-                                    {lang === 'en' ? 'Secure This Domain' : 'حجز النطاق الآن'}
-                                    <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
-                                </a>
+                            <h1 className="font-serif text-[clamp(40px,8vw,100px)] font-bold mb-6 tracking-tight leading-none uppercase">
+                                Team<span className="text-gold">Newman</span>
+                            </h1>
+
+                            <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+                                {lang === 'en' 
+                                    ? 'A high-authority digital domain tailored for leadership, fintech, and strategic growth. Currently open for acquisition.' 
+                                    : 'نطاق رقمي عالي السلطة مصمم للقيادة والنمو الاستراتيجي. متاح حالياً للاستحواذ.'}
+                            </p>
+
+                            <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-16">
+                                <div className="glass p-6 w-64 border-t-2 border-gold">
+                                    <p className="text-[10px] uppercase tracking-[3px] text-gray-500 mb-2">Valuation Range</p>
+                                    <p className="text-2xl font-serif text-gold">$15,900+</p>
+                                </div>
+                                <div className="glass p-6 w-64 border-t-2 border-gold">
+                                    <p className="text-[10px] uppercase tracking-[3px] text-gray-500 mb-2">Sector Authority</p>
+                                    <p className="text-2xl font-serif text-gold">98/100</p>
+                                </div>
                             </div>
+
+                            <a href="mailto:tarik.hamidd95@gmail.com" className="group bg-white text-black px-12 py-5 text-sm font-black uppercase tracking-[5px] hover:bg-gold transition-all flex items-center gap-4 mx-auto w-fit">
+                                {lang === 'en' ? 'Inquire Now' : 'استفسر الآن'}
+                                <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-all" />
+                            </a>
                         </motion.div>
-                    </section>
+                    </main>
                 </div>
             );
         }
